@@ -6,18 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://zhaoxizhang.github.io">
-  <title>Archives: 2017 | ZhaoxiZhang</title>
+  <title>减小APK大小 | ZhaoxiZhang</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="A CS student in Fuzhou University">
-<meta property="og:type" content="website">
-<meta property="og:title" content="ZhaoxiZhang">
-<meta property="og:url" content="https://zhaoxizhang.github.io/archives/2017/index.html">
+  <meta name="description" content="本篇文章翻译自Reduce APK Size   用户通常不会去下载体积过大的应用程序，特别是当自己的设备连接的是 2G/3G 或者按字节付费的网络。这篇文章描述了如何缩减 APK 的体积大小，以使得更多用户愿意下载你开发的应用。">
+<meta name="keywords" content="Android——性能优化">
+<meta property="og:type" content="article">
+<meta property="og:title" content="减小APK大小">
+<meta property="og:url" content="https://zhaoxizhang.github.io/2018/04/21/减小APK大小/index.html">
 <meta property="og:site_name" content="ZhaoxiZhang">
-<meta property="og:description" content="A CS student in Fuzhou University">
+<meta property="og:description" content="本篇文章翻译自Reduce APK Size   用户通常不会去下载体积过大的应用程序，特别是当自己的设备连接的是 2G/3G 或者按字节付费的网络。这篇文章描述了如何缩减 APK 的体积大小，以使得更多用户愿意下载你开发的应用。">
 <meta property="og:locale" content="zh-cn">
+<meta property="og:updated_time" content="2018-04-21T06:45:11.532Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ZhaoxiZhang">
-<meta name="twitter:description" content="A CS student in Fuzhou University">
+<meta name="twitter:title" content="减小APK大小">
+<meta name="twitter:description" content="本篇文章翻译自Reduce APK Size   用户通常不会去下载体积过大的应用程序，特别是当自己的设备连接的是 2G/3G 或者按字节付费的网络。这篇文章描述了如何缩减 APK 的体积大小，以使得更多用户愿意下载你开发的应用。">
   
     <link rel="alternative" href="/atom.xml" title="ZhaoxiZhang" type="application/atom+xml">
   
@@ -153,49 +155,207 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-减小APK大小" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/08/08/test/" class="archive-article-date">
-  	<time datetime="2017-08-08T12:14:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-08</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/08/test/">&#39;test&#39;</a>
+    <h1 class="article-title" itemprop="name">
+      减小APK大小
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
+        
+        <a href="/2018/04/21/减小APK大小/" class="archive-article-date">
+  	<time datetime="2018-04-20T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本篇文章翻译自<a href="https://developer.android.com/topic/performance/reduce-apk-size.html#apk-structure" target="_blank" rel="external">Reduce APK Size</a></p>
+<p>  用户通常不会去下载体积过大的应用程序，特别是当自己的设备连接的是 2G/3G 或者按字节付费的网络。这篇文章描述了如何缩减 APK 的体积大小，以使得更多用户愿意下载你开发的应用。<br><a id="more"></a></p>
+<h2 id="了解APK结构"><a href="#了解APK结构" class="headerlink" title="了解APK结构"></a>了解APK结构</h2><p>  在讨论如何缩减你应用的体积之前，了解 APK 结构是非常有益处的。一个 APK 文件包含了一个 ZIP 文件，该 ZIP 文件包含了组成你应用的所有文件，这些文件包括 Java 字节码文件、资源文件和已编译资源的文件。<br>APK 包含下列目录：</p>
+<ul>
+<li><code>META-INF/</code>：包含了<code>CERT.SF</code>、<code>CERT.RSA</code>签名文件以及<code>MAINFEST.MF</code>mainfest文件</li>
+<li><code>assets/</code>：包含了应用程序的资源，应用程序可以通过 <a href="https://developer.android.com/reference/android/content/res/AssetManager.html" target="_blank" rel="external">AssetManager</a> 检索资源</li>
+<li><code>res/</code>：包含了没有编译到<code>resources.arsc</code>的资源</li>
+<li><code>lib/</code>：包含了特定处理器的软件层的编译代码，该目录包含了每个平台类型的子目录，例如<code>armeabi</code>、<code>armeabi-v7a</code>、<code>arm64-v8a</code>、<code>x86</code>、<code>x86_64</code>和<code>mips</code></li>
+</ul>
+<p>APK 也包含了下列文件，在这些文件之中，只有<code>Mainfest.xml</code>是强制的</p>
+<ul>
+<li><code>resources.arsc</code>：包含了编译的资源，该文件包含了来自<code>res/values/</code>目录下所有配置的XML内容。打包工具提取此XML内容，将其编译为二进制格式，并归档内容。此内容包含了语言字符串和样式，以及未直接包含在<code>resources.arsc</code>文件中的内容路径，比如布局文件和图像。<br><code>classes.dex</code>：包含了能被<code>Dalvik/ART</code>虚拟机识别的 DEX 文件格式编译的类<br><code>AndroidManifest.xml</code>：包含了 Android 核心的 mainfest 文件。该文件罗列了应用程序的名字、版本、权限和引用的第三方库。该文件使用 Android 的二进制 XML 格式</li>
+</ul>
+<h2 id="减少资源数量和大小"><a href="#减少资源数量和大小" class="headerlink" title="减少资源数量和大小"></a>减少资源数量和大小</h2><p>  APK 的大小会影响到应用程序启动的速度、使用的内存和消耗的电量。缩减应用程序大小最简单的方式之一就是减少它所包含的资源数量和大小。特别是你可以移除你的应用中不再使用的资源，或者使用可拓展的 <a href="https://developer.android.com/reference/android/graphics/drawable/Drawable.html" target="_blank" rel="external">Drawable</a>  对象来替代图像文件。这部分讨论的这些方法以及一些其他的方式可以减少你应用程序中的资源从而在整体上减少 APK 体积的大小。</p>
+<h3 id="移除无用的资源"><a href="#移除无用的资源" class="headerlink" title="移除无用的资源"></a>移除无用的资源</h3><p>Android Studio中的静态代码检查工具——<a href="https://developer.android.com/studio/write/lint.html" target="_blank" rel="external">lint</a>可以检测<code>res/</code>目录下没有引用的资源。当 lint 检查工具发现在你项目中可能存在一个没有使用的资源，它将会打印出类似如下的信息：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">res/layout/preferences.xml: Warning: The resource R.layout.preferences appears</div><div class="line">    to be unused [UnusedResources]</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>注意：lint 检查工具没有扫描<code>assets/</code>目录，assets 资源是通过反射的方式，或者链接到应用程序的库文件来发现引用的。此外，lint 检查工具并不删除这些资源，它只是提醒你它们的存在。</p>
+</blockquote>
+<p>你使用的一些库可能包含了一些无用的资源，如果你在 <code>build.gradle</code>文件中开启了 <a href="https://developer.android.com/studio/build/shrink-code.html" target="_blank" rel="external">shrinkResources</a>，那么 Gradle 可以帮你自动移除这些资源。<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">android &#123;</div><div class="line">    <span class="comment">// Other settings</span></div><div class="line"></div><div class="line">    buildTypes &#123;</div><div class="line">        release &#123;</div><div class="line">            minifyEnabled <span class="literal">true</span></div><div class="line">            shrinkResources <span class="literal">true</span></div><div class="line">            proguardFiles getDefaultProguardFile(<span class="string">'proguard-android.txt'</span>), <span class="string">'proguard-rules.pro'</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>要使用 shrinkResources，你必须启用代码缩减。在编译的过程，首先 <a href="https://developer.android.com/studio/build/shrink-code.html" target="_blank" rel="external">ProGuard</a> 移除无用的代码但是并不移除无用的资源，之后由 Gradle 移除无用的资源。<br>更多有关 ProGuard 和其他一些通过 Android Studio帮助你缩减 APK 体积大小的方法，可以查看<a href="https://developer.android.com/studio/build/shrink-code.html" target="_blank" rel="external">压缩代码和资源</a></p>
+<h3 id="最小化库中资源的使用"><a href="#最小化库中资源的使用" class="headerlink" title="最小化库中资源的使用"></a>最小化库中资源的使用</h3><p>当开发一个 Android 应用的时候，通常会使用一些第三方库来提高应用程序的可用性和多功能性。比如，可能使用了 <a href="https://developer.android.com/topic/libraries/support-library/index.html" target="_blank" rel="external">Android Support Library</a> 来改善在旧机型上的用户体验，或者使用 <a href="https://developers.google.com/android/guides/overview" target="_blank" rel="external">Google Play Services</a> 为应用程序提供自动翻译。<br>如果一个库是为服务器或者桌面设计的，那么它通常包含了许多你的应用程序用不到的对象和方法，如果这个库所使用的协议允许，那么你可以修改这个库文件。当然，你也可以使用其他一些对于移动端友好的库来为你的应用程序添加特定功能。</p>
+<blockquote>
+<p>注意：ProGuard 可以清理第三方库中对你应用非必须的代码，但是它不能移除第三方库的大型内部依赖项。</p>
+</blockquote>
+<h3 id="只支持特定的分辨率"><a href="#只支持特定的分辨率" class="headerlink" title="只支持特定的分辨率"></a>只支持特定的分辨率</h3><p>Android 支持非常大的设备集，拥有着各式各样的分辨率。在 Android4.4（API level 19）或者更高的系统版本，其框架支持许多分辨率：<code>ldpi</code>、<code>mdpi</code>、<code>tvdpi</code>、<code>hdpi</code>、<code>xhdpi</code>、<code>xxhdpi</code>。尽管 Android 支持所有这些分辨率，但是你并不需要适配每一种分辨率。<br>如果你知道你的用户群中只有一小部分使用具有特定分辨率的设备，考虑你是否需要适配这些分辨率。如果你没有为特定分辨率准备资源文件，那么 Android 将自动缩放最初为其他屏幕分辨率设计的现有资源。<br>如果你的应用程序只需要缩放的图片，你可以通过在 <code>drawable-nodpi</code>目录中使用图片的单个版本来节省更多的空间。我们建议每个应用程序至少包含一个<code>xxhdpi</code>图片版本。<br>更多有关屏幕分辨率的信息，可以查看<a href="https://developer.android.com/about/dashboards/index.html#Screens" target="_blank" rel="external">屏幕尺寸和密度</a></p>
+<h3 id="使用drawable对象"><a href="#使用drawable对象" class="headerlink" title="使用drawable对象"></a>使用drawable对象</h3><p>一些图像并不需要一个静态的图像资源，frameworker 可以在运行时动态的绘制出图像。<a href="https://developer.android.com/reference/android/graphics/drawable/Drawable.html" target="_blank" rel="external">Drawable</a> 对象占用APK中少量空间。此外，XML形式的 <a href="https://developer.android.com/reference/android/graphics/drawable/Drawable.html" target="_blank" rel="external">Drawable</a> 对象可以产生符合<code>Material Design</code>准则的单色图像。</p>
+<h3 id="重用资源"><a href="#重用资源" class="headerlink" title="重用资源"></a>重用资源</h3><p>你可以为图像的不同分辨率添加一个单独的资源，比如同一图像的着色、阴影或者旋转版本。但是我们强烈建议你重用相同的资源集，在运行时根据需要定制它们。<br>Android 提供了几个实用程序来更改 asset 的颜色，在 Android5.0（API level 21）或以上版本，可以使用<code>android:tint</code>和<code>tintMode</code>属性。对于较低的系统版本，使用 <a href="https://developer.android.com/reference/android/graphics/ColorFilter.html" target="_blank" rel="external">ColorFilter</a> 类<br>你可以忽略等价于其他资源的资源。下列的代码片段提供了一个例子，通过在图像中间旋转180°将向上的标志转换成向下的标志。<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</div><div class="line"><span class="tag">&lt;<span class="name">rotate</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></div><div class="line"><span class="tag">    <span class="attr">android:drawable</span>=<span class="string">"@drawable/ic_thumb_up"</span></span></div><div class="line"><span class="tag">    <span class="attr">android:pivotX</span>=<span class="string">"50%"</span></span></div><div class="line"><span class="tag">    <span class="attr">android:pivotY</span>=<span class="string">"50%"</span></span></div><div class="line"><span class="tag">    <span class="attr">android:fromDegrees</span>=<span class="string">"180"</span> /&gt;</span></div></pre></td></tr></table></figure></p>
+<h3 id="从代码中呈现"><a href="#从代码中呈现" class="headerlink" title="从代码中呈现"></a>从代码中呈现</h3><p>我们还可以通过程序化渲染图像来缩减 APK 的体积大小。程序化渲染可以释放空间，因为你不再在APK中保存图像文件。</p>
+<h3 id="压缩PNG文件"><a href="#压缩PNG文件" class="headerlink" title="压缩PNG文件"></a>压缩PNG文件</h3><p><code>aapt</code>工具在编译的过程可以无损压缩存放在<code>res/drawable/</code>目录下的资源。例如，<code>aapt</code>工具可以将不需要超过256种颜色的真彩色PNG转换为具有调色板的8位PNG。 这样会产生质量相同的图像，但内存占用空间更小。<br>记住aapt有以下限制：</p>
+<ul>
+<li>aapt工具不能压缩<code>asset</code>目录下的PNG文件</li>
+<li>aapt工具只能优化使用不多于256位颜色的图像文件</li>
+<li>aapt工具可能会填充已经压缩过的PNG图像，为了防止这种情况，你可以使用 Gradle 中的<code>cruncherEnabled</code>标志来禁用 PNG 文件的这个过程。<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">aaptOptions &#123;</div><div class="line">    cruncherEnabled = false</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="压缩PNG和JPEG文件"><a href="#压缩PNG和JPEG文件" class="headerlink" title="压缩PNG和JPEG文件"></a>压缩PNG和JPEG文件</h3><p>你可以使用类似 <a href="https://pmt.sourceforge.io/pngcrush/" target="_blank" rel="external">pngcrush</a>、<a href="https://pngquant.org/" target="_blank" rel="external">pngquant</a> 或者 <a href="https://github.com/google/zopfli" target="_blank" rel="external">zopflipng</a> 等工具来无损压缩 PNG 文件。所有这些工具都可以压缩 PNG 同时保持图像质量。<br>pngcrush 工具特别有效：这个工具通过使用过滤器和参数的各种组合来压缩图像，在 PNG 过滤器和 zlib(Deflate) 参数上迭代。它选择最小压缩输出的配置。<br>对于 JPEG 图像，你可以使用类似 <a href="http://www.elektronik.htw-aalen.de/packjpg/" target="_blank" rel="external">packJPG</a> 和 <a href="https://github.com/google/guetzli" target="_blank" rel="external">guetzli</a> 的工具来压缩。</p>
+<h3 id="使用WebP文件格式"><a href="#使用WebP文件格式" class="headerlink" title="使用WebP文件格式"></a>使用WebP文件格式</h3><p>在Android 3.2（API level 13）或更高版本，除了使用 PNG 或 JPEG 格式的图像文件，你还可以使用 <a href="https://developers.google.com/speed/webp/" target="_blank" rel="external">WebP</a> 文件格式的图像。WebP 格式提供有损压缩（类似于JPEG）以及透明度（类似于PNG），但是能更好的提供比 JPEG 或 PNG 更好的压缩效果。<br>你可以使用 Android Studio 转换 BMP、JPG、PNG或者静态GIF的图像为 WebP 格式。获取更多信息，查看<a href="https://developer.android.com/studio/write/convert-webp.html" target="_blank" rel="external">创建WebP图像</a></p>
+<blockquote>
+<p>注意：Google Play 只接受<a href="https://material.io/guidelines/style/icons.html#" target="_blank" rel="external">启动图标</a>为 PNG 格式的 APKs</p>
+</blockquote>
+<h3 id="使用矢量图形"><a href="#使用矢量图形" class="headerlink" title="使用矢量图形"></a>使用矢量图形</h3><p>你可以使用矢量图形创建独立于分辨率的图标和其他可伸缩图片。 使用这些图形可以大大减少APK的大小。矢量图形在 Android 中表示为 <a href="https://developer.android.com/reference/android/graphics/drawable/VectorDrawable.html" target="_blank" rel="external">VectorDrawable</a> 对象。使用 <a href="https://developer.android.com/reference/android/graphics/drawable/VectorDrawable.html" target="_blank" rel="external">VectorDrawable</a> 对象，100字节的文件可以生成屏幕大小的清晰图像。<br>但是系统将会花费大量时间去渲染 <a href="https://developer.android.com/reference/android/graphics/drawable/VectorDrawable.html" target="_blank" rel="external">VectorDrawable</a> 对象，对于大的图像需要更长的时间才能出现在屏幕上。因此，在展示小图像的时候再考虑矢量图。<br>获取更多有关 <a href="https://developer.android.com/reference/android/graphics/drawable/VectorDrawable.html" target="_blank" rel="external">VectorDrawable</a> 对象的信息，查看<a href="https://developer.android.com/training/material/drawables.html" target="_blank" rel="external">使用图片</a></p>
+<h3 id="使用矢量图形制作动画图像"><a href="#使用矢量图形制作动画图像" class="headerlink" title="使用矢量图形制作动画图像"></a>使用矢量图形制作动画图像</h3><p>不要使用 <a href="https://developer.android.com/reference/android/graphics/drawable/AnimationDrawable.html" target="_blank" rel="external">AnimationDrawable</a> 去创建逐帧动画，因为这样做需要为动画的每个帧添加单独的位图文件，这会增加 APK 的体积大小。<br>你可以使用 <a href="https://developer.android.com/reference/android/support/graphics/drawable/AnimatedVectorDrawableCompat.html" target="_blank" rel="external">AnimatedVectorDrawable</a> 为<a href="https://developer.android.com/training/material/animations.html#AnimVector" target="_blank" rel="external">矢量图片添加动画</a></p>
+<h2 id="减少Native和Java代码"><a href="#减少Native和Java代码" class="headerlink" title="减少Native和Java代码"></a>减少Native和Java代码</h2><p>你可以使用下列几种方式去减少应用程序中的 Java 和 native 代码库。</p>
+<h3 id="移除不必要的生成代码"><a href="#移除不必要的生成代码" class="headerlink" title="移除不必要的生成代码"></a>移除不必要的生成代码</h3><p>确保了解自动生成的代码的足迹。例如，许多协议缓冲工具生成过多的方法和类，这可能使应用程序的大小增加一倍或者两倍。</p>
+<h3 id="避免枚举"><a href="#避免枚举" class="headerlink" title="避免枚举"></a>避免枚举</h3><p>一个枚举可以为你的应用程序的<code>classes.dex</code>文件增加1.0至1.4KB的大小，对于复杂系统或者共享库，这些将快速累积。如果可能的话，考虑使用<code>@IntDef</code>注解和 <a href="https://developer.android.com/studio/build/shrink-code.html" target="_blank" rel="external">ProGuard</a> 来除去枚举并将它们转换为整数。这种类型转换保留了枚举的所有类型安全的好处。</p>
+<h3 id="减小本地二进制文件的大小"><a href="#减小本地二进制文件的大小" class="headerlink" title="减小本地二进制文件的大小"></a>减小本地二进制文件的大小</h3><p>如果你的应用程序使用 native code 和 Android NDK，你可以通过优化代码来减少应用程序的体积大小。两种有用的技术是删除调试符号和避免提取本地库。</p>
+<ul>
+<li>删除调试符号<br>如果你的应用程序正在开发并且需要调试，那么使用调试符号是很有意义的。使用 Android NDK 提供的<code>arm-eabi-strip</code>工具去移除本地库中不必要的调试符号，之后再进行 release版本的编译。</li>
+<li>避免提取本地库<br>将<code>.so</code>文件保存在 APK 中未压缩的文件，设置<code> application </code>中的元素<code>android:extracNativeLibs</code>为false，这将防止 <a href="https://developer.android.com/reference/android/content/pm/PackageManager.html" target="_blank" rel="external">PackageManager</a> 在安装过程中将<code>.so</code>文件从APK复制到文件系统，并且有一个额外的好处，使得应用程序的增量更新更小。</li>
+</ul>
+<h2 id="维护多个精简版APK"><a href="#维护多个精简版APK" class="headerlink" title="维护多个精简版APK"></a>维护多个精简版APK</h2><p>你的 APK 可以包含用户下载但从未使用的内容，例如区域或语言信息。为了让用户下载尽量小的应用程序，你可以将你的应用程序根据屏幕尺寸或GPU纹理支持等因素细分为多个 APKs。<br>当用户下载你的应用程序的时候，根据他们的设备特点以及设置详情，他们会接收到正确的 APK，这样，设备不会接收设备没有的功能的资源。例如，一个用户有<code>hdpi</code>的设备，他们不需要为更高分辨率的设备提供的<code>xxxhdpi</code>的资源。<br>获取更多相关信息，可以查看 <a href="https://developer.android.com/studio/build/configure-apk-splits.html" target="_blank" rel="external">Configure APK Splits</a> 和 <a href="https://developer.android.com/google/play/publishing/multiple-apks.html" target="_blank" rel="external"> Maintaining Multiple APKs</a></p>
 
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Android——性能优化</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=https://zhaoxizhang.github.io/2018/04/21/减小APK大小/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2018/04/20/Java 8新特性/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Java 8新特性</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#了解APK结构"><span class="toc-number">1.</span> <span class="toc-text">了解APK结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#减少资源数量和大小"><span class="toc-number">2.</span> <span class="toc-text">减少资源数量和大小</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#移除无用的资源"><span class="toc-number">2.1.</span> <span class="toc-text">移除无用的资源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#最小化库中资源的使用"><span class="toc-number">2.2.</span> <span class="toc-text">最小化库中资源的使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#只支持特定的分辨率"><span class="toc-number">2.3.</span> <span class="toc-text">只支持特定的分辨率</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用drawable对象"><span class="toc-number">2.4.</span> <span class="toc-text">使用drawable对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#重用资源"><span class="toc-number">2.5.</span> <span class="toc-text">重用资源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#从代码中呈现"><span class="toc-number">2.6.</span> <span class="toc-text">从代码中呈现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#压缩PNG文件"><span class="toc-number">2.7.</span> <span class="toc-text">压缩PNG文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#压缩PNG和JPEG文件"><span class="toc-number">2.8.</span> <span class="toc-text">压缩PNG和JPEG文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用WebP文件格式"><span class="toc-number">2.9.</span> <span class="toc-text">使用WebP文件格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用矢量图形"><span class="toc-number">2.10.</span> <span class="toc-text">使用矢量图形</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用矢量图形制作动画图像"><span class="toc-number">2.11.</span> <span class="toc-text">使用矢量图形制作动画图像</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#减少Native和Java代码"><span class="toc-number">3.</span> <span class="toc-text">减少Native和Java代码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#移除不必要的生成代码"><span class="toc-number">3.1.</span> <span class="toc-text">移除不必要的生成代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#避免枚举"><span class="toc-number">3.2.</span> <span class="toc-text">避免枚举</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#减小本地二进制文件的大小"><span class="toc-number">3.3.</span> <span class="toc-text">减小本地二进制文件的大小</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#维护多个精简版APK"><span class="toc-number">4.</span> <span class="toc-text">维护多个精简版APK</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
 
 
           </div>
@@ -222,8 +382,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
@@ -282,6 +442,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Android——性能优化</a>
+              </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Java</a>
