@@ -6,18 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://zhaoxizhang.github.io">
-  <title>Tag: Java | ZhaoxiZhang</title>
+  <title>Java中static的用法 | ZhaoxiZhang</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="A CS student in Fuzhou University">
-<meta property="og:type" content="website">
-<meta property="og:title" content="ZhaoxiZhang">
-<meta property="og:url" content="https://zhaoxizhang.github.io/tags/Java/index.html">
+  <meta name="description" content="静态域&amp;nbsp;&amp;nbsp;如果将域定义为 static，每个类中只有一个这样的域。而每一个对象对于所有的实例域却都有自己的一份拷贝。例如，假定需要给每一个雇员赋予唯一的标识码，这里给 Employee 类添加一个实例域 id 和一个静态域 nextId：">
+<meta name="keywords" content="Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java中static的用法">
+<meta property="og:url" content="https://zhaoxizhang.github.io/2018/05/31/The-use-of-static-in-Java/index.html">
 <meta property="og:site_name" content="ZhaoxiZhang">
-<meta property="og:description" content="A CS student in Fuzhou University">
+<meta property="og:description" content="静态域&amp;nbsp;&amp;nbsp;如果将域定义为 static，每个类中只有一个这样的域。而每一个对象对于所有的实例域却都有自己的一份拷贝。例如，假定需要给每一个雇员赋予唯一的标识码，这里给 Employee 类添加一个实例域 id 和一个静态域 nextId：">
 <meta property="og:locale" content="zh-cn">
+<meta property="og:updated_time" content="2018-05-31T12:55:12.872Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ZhaoxiZhang">
-<meta name="twitter:description" content="A CS student in Fuzhou University">
+<meta name="twitter:title" content="Java中static的用法">
+<meta name="twitter:description" content="静态域&amp;nbsp;&amp;nbsp;如果将域定义为 static，每个类中只有一个这样的域。而每一个对象对于所有的实例域却都有自己的一份拷贝。例如，假定需要给每一个雇员赋予唯一的标识码，这里给 Employee 类添加一个实例域 id 和一个静态域 nextId：">
   
     <link rel="alternative" href="/atom.xml" title="ZhaoxiZhang" type="application/atom+xml">
   
@@ -153,36 +155,50 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-The-use-of-static-in-Java" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      Java中static的用法
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/05/31/The-use-of-static-in-Java/" class="archive-article-date">
+
+        
+        <a href="/2018/05/31/The-use-of-static-in-Java/" class="archive-article-date">
   	<time datetime="2018-05-30T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-31</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/31/The-use-of-static-in-Java/">Java中static的用法</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="静态域"><a href="#静态域" class="headerlink" title="静态域"></a>静态域</h2><p>&nbsp;&nbsp;如果将域定义为 static，每个类中只有一个这样的域。而每一个对象对于所有的实例域却都有自己的一份拷贝。例如，假定需要给每一个雇员赋予唯一的标识码，这里给 Employee 类添加一个实例域 id 和一个静态域 nextId：<br><a id="more"></a><br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Employee</span></span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> nextId = <span class="number">1</span>;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> id;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>&nbsp;&nbsp;现在，每一个雇员对象都有一个自己的 id 域，但这个类的所有实例将共享一个 nextId。nextId 属于类，而不属于任何一个对象，没有对象的存在，静态域 nextId 也存在。<br>&nbsp;&nbsp;对于静态变量，静态常量在 Java 中更为常见，我们平常中比较熟悉的 Math 类中就定义有静态常量供我们直接使用：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span></span>&#123;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">double</span> E = <span class="number">2.7182818284590452354</span>;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">double</span> PI = <span class="number">3.14159265358979323846</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>对于静态域，其使用场景一般用于：</p>
+<ul>
+<li>在对象之间共享数据</li>
+<li>方便访问</li>
+</ul>
+<h2 id="静态方法"><a href="#静态方法" class="headerlink" title="静态方法"></a>静态方法</h2><p>&nbsp;&nbsp;同样，我们仍然可以在 Math 类中看到很多的静态方法：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span></span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">double</span> <span class="title">sin</span><span class="params">(<span class="keyword">double</span> a)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> StrictMath.sin(a);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">double</span> <span class="title">cos</span><span class="params">(<span class="keyword">double</span> a)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> StrictMath.cos(a);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>&nbsp;&nbsp;对于静态方法的调用，我们可以使用“类名.方法名”的方式，也可以使用“对象名.方法名”的方式调用，静态方法在访问本类的成员的时候，只允许访问静态成员（即静态变（常）量和静态方法），而不允许访问实例成员，因为实例成员与具体的对象关联，而静态方法属于类，不与任何对象绑定。</p>
+<h2 id="静态代码块"><a href="#静态代码块" class="headerlink" title="静态代码块"></a>静态代码块</h2><p>&nbsp;&nbsp;可以将多个静态初始化动作组织成一个特殊的“静态子句”构成静态代码块：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span></span>&#123;</div><div class="line">    <span class="keyword">static</span> <span class="keyword">int</span> i;</div><div class="line">    <span class="keyword">static</span>&#123;</div><div class="line">        i = <span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>对于上述代码，实际就是一段跟在 static 关键字后面的代码，与其他静态初始化动作一样，这段代码只执行一次：当首次生成这个类的一个对象时，或者首次访问属于那个类的静态数据成员时（即便从未生成过那个类的对象）<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Cup</span></span>&#123;</div><div class="line">    Cup(<span class="keyword">int</span> marker)&#123;</div><div class="line">        System.out.println(<span class="string">"Cup("</span> + marker + <span class="string">")"</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">f</span><span class="params">(<span class="keyword">int</span> marker)</span></span>&#123;</div><div class="line">        System.out.println(<span class="string">"f("</span> + marker + <span class="string">")"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Cups</span></span>&#123;</div><div class="line">    <span class="keyword">static</span> Cup cup1;</div><div class="line">    <span class="keyword">static</span> Cup cup2;</div><div class="line">    <span class="keyword">static</span> &#123;</div><div class="line">        cup1 = <span class="keyword">new</span> Cup(<span class="number">1</span>);</div><div class="line">        cup2 = <span class="keyword">new</span> Cup(<span class="number">2</span>);</div><div class="line">    &#125;</div><div class="line">    Cups()&#123;</div><div class="line">        System.out.println(<span class="string">"Cups()"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ExplicitStatic</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String... args)</span></span>&#123;</div><div class="line">        System.out.println(<span class="string">"Inside main()"</span>);</div><div class="line">        <span class="comment">//Cups.cup1.f(99);   //(1)</span></div><div class="line">        Cups cups = <span class="keyword">new</span> Cups();  <span class="comment">//(2)</span></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/*执行（1）处的代码，其输出如下：</span></div><div class="line"><span class="comment">    Inside main()</span></div><div class="line"><span class="comment">    Cup(1)</span></div><div class="line"><span class="comment">    Cup(2)</span></div><div class="line"><span class="comment">    f(99)</span></div><div class="line"><span class="comment"></span></div><div class="line"><span class="comment">执行（2）处的代码，其输出如下：</span></div><div class="line"><span class="comment">    Inside main()</span></div><div class="line"><span class="comment">    Cup(1)</span></div><div class="line"><span class="comment">    Cup(2)</span></div><div class="line"><span class="comment">    Cups()</span></div><div class="line"><span class="comment">*/</span></div></pre></td></tr></table></figure></p>
+<p>值得注意的是，对于执行（2）的代码，<strong>静态代码块中的内容优于构造器先执行</strong>。另外，如果（1），（2）的代码都不执行，那么静态代码块中的代码也不会得到执行。</p>
+<h2 id="static与final"><a href="#static与final" class="headerlink" title="static与final"></a>static与final</h2><p>static与final连用修饰成员，一般作为全局常量使用，其修饰的变量无法修改，修饰的方法无法被覆盖。</p>
+<h2 id="static常见面试题"><a href="#static常见面试题" class="headerlink" title="static常见面试题"></a>static常见面试题</h2><ul>
+<li>非静态内部类里面为什么不能有静态属性和静态方法<br>static 类型的属性和方法在类加载的时候就会存在于内存中，要使用某个类的 static 属性或者方法的前提是这个类已经加载到 JVM 中，非 static 内部类默认是持有外部类的引用且依赖外部类存在，所以如果一个非 static 的内部类一旦具有 static 的属性或者方法就会出现内部类未加载时却试图在内存中创建内部类的 static 属性和方法，这自然是错误的，类都不存在（没被加载）却希望操作它的属性和方法。从另一个角度讲非 static 的内部类在实例化的时候才会加载（不自动跟随主类加载），而 static 的语义是类能直接通过类名来访问类的 static 属性或者方法，所以如果没有实例化非 static 的内部类就等于非 static 的内部类没有被加载，所以无从谈起通过类名访问 static 属性或者方法。</li>
+</ul>
 
-        <div class="article-info info-on-right">
-          
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -194,57 +210,134 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=https://zhaoxizhang.github.io/2018/05/31/The-use-of-static-in-Java/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/04/20/Java 8新特性/" class="archive-article-date">
-  	<time datetime="2018-04-19T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-20</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2018/04/21/减小APK大小/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">减小APK大小</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/20/Java 8新特性/">Java 8新特性</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#静态域"><span class="toc-number">1.</span> <span class="toc-text">静态域</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#静态方法"><span class="toc-number">2.</span> <span class="toc-text">静态方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#静态代码块"><span class="toc-number">3.</span> <span class="toc-text">静态代码块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#static与final"><span class="toc-number">4.</span> <span class="toc-text">static与final</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#static常见面试题"><span class="toc-number">5.</span> <span class="toc-text">static常见面试题</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
+  <div id="box"></div>
+<link rel="stylesheet" href="https://zhaoxizhang.github.io/assets/gitment.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+id: 'Thu May 31 2018 00:00:00 GMT+0800',
+owner: 'ZhaoxiZhang',
+repo: 'ZhaoxiZhang.github.io',
+oauth: {
+    client_id: 'f4c848d614677d3566da',
+    client_secret: 'af2a1a8275fef7f95ce080165904bb66e0d0035f',
+},
+})
+gitment.render('box')
+</script>
   
-    </div></section>
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -271,9 +364,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
