@@ -2,30 +2,37 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://zhaoxizhang.github.io/2018/04/21/Reduce-apk-size/</loc>
+    
+    <lastmod>2018-11-06T14:22:30.627Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://zhaoxizhang.github.io/2018/10/21/Java-HashMap-Source-Analysis/</loc>
+    
+    <lastmod>2018-11-06T14:18:06.798Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://zhaoxizhang.github.io/2018/06/14/Java-Design-Patterns-Singleton/</loc>
     
-    <lastmod>2018-06-14T06:17:23.917Z</lastmod>
+    <lastmod>2018-06-14T06:17:23.918Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://zhaoxizhang.github.io/2018/05/31/The-use-of-static-in-Java/</loc>
     
-    <lastmod>2018-06-07T08:30:09.032Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://zhaoxizhang.github.io/2018/04/21/%E5%87%8F%E5%B0%8FAPK%E5%A4%A7%E5%B0%8F/</loc>
-    
-    <lastmod>2018-04-21T06:45:11.532Z</lastmod>
+    <lastmod>2018-06-07T08:30:09.033Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://zhaoxizhang.github.io/2018/04/20/Java%208%E6%96%B0%E7%89%B9%E6%80%A7/</loc>
     
-    <lastmod>2018-04-19T16:50:20.826Z</lastmod>
+    <lastmod>2018-04-19T16:50:20.827Z</lastmod>
     
   </url>
   
