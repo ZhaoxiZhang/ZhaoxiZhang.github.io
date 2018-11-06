@@ -6,19 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://zhaoxizhang.github.io">
-  <title>&#39;test&#39; | ZhaoxiZhang</title>
+  <title>Java设计模式——建造者模式（创建型模式） | ZhaoxiZhang</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="test">
+  <meta name="description" content="概述&amp;nbsp;&amp;nbsp;建造者模式也称为生成器模式，是一种对象创建型模式，它可以将复杂对象的建造过程抽象出来（抽象类别），使这个抽象过程的不同实现方法可以构造出不同表现（属性）的对象。">
+<meta name="keywords" content="Java,设计模式">
 <meta property="og:type" content="article">
-<meta property="og:title" content="&#39;test&#39;">
-<meta property="og:url" content="https://zhaoxizhang.github.io/2017/08/08/test/index.html">
+<meta property="og:title" content="Java设计模式——建造者模式（创建型模式）">
+<meta property="og:url" content="https://zhaoxizhang.github.io/2018/06/17/Java-Design-Patterns-Builder/index.html">
 <meta property="og:site_name" content="ZhaoxiZhang">
-<meta property="og:description" content="test">
+<meta property="og:description" content="概述&amp;nbsp;&amp;nbsp;建造者模式也称为生成器模式，是一种对象创建型模式，它可以将复杂对象的建造过程抽象出来（抽象类别），使这个抽象过程的不同实现方法可以构造出不同表现（属性）的对象。">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2017-08-09T01:53:33.445Z">
+<meta property="og:updated_time" content="2018-11-06T14:58:19.052Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="&#39;test&#39;">
-<meta name="twitter:description" content="test">
+<meta name="twitter:title" content="Java设计模式——建造者模式（创建型模式）">
+<meta name="twitter:description" content="概述&amp;nbsp;&amp;nbsp;建造者模式也称为生成器模式，是一种对象创建型模式，它可以将复杂对象的建造过程抽象出来（抽象类别），使这个抽象过程的不同实现方法可以构造出不同表现（属性）的对象。">
   
     <link rel="alternative" href="/atom.xml" title="ZhaoxiZhang" type="application/atom+xml">
   
@@ -154,20 +155,20 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-test" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Java-Design-Patterns-Builder" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      &#39;test&#39;
+      Java设计模式——建造者模式（创建型模式）
     </h1>
   
 
         
-        <a href="/2017/08/08/test/" class="archive-article-date">
-  	<time datetime="2017-08-08T12:14:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-08</time>
+        <a href="/2018/06/17/Java-Design-Patterns-Builder/" class="archive-article-date">
+  	<time datetime="2018-06-16T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-17</time>
 </a>
         
         
@@ -179,16 +180,22 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>test</p>
-<a id="more"></a>
-<h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div><div class="line">$ hexo deploy</div><div class="line">$ hexo deploy</div><div class="line">$ hexo deploy</div><div class="line">$ hexo deploy</div><div class="line">$ hexo deploy</div><div class="line">$ hexo deploy</div><div class="line">$ hexo deploy</div><div class="line">$ hexo deploy</div><div class="line">$ hexo deploy</div><div class="line">$ hexo deploy</div><div class="line">$ hexo deploy</div><div class="line">$ hexo deploy</div><div class="line">$ hexo deploy</div><div class="line">$ hexo deploy</div><div class="line">$ hexo deploy</div><div class="line">$ hexo deploy</div><div class="line">$ hexo deploy</div><div class="line">$ hexo deploy</div><div class="line">$ hexo deploy</div><div class="line">$ hexo deploy</div><div class="line">$ hexo deploy</div><div class="line">$ hexo deploy</div><div class="line">$ hexo deploy</div><div class="line">$ hexo deploy</div><div class="line">$ hexo deploy</div><div class="line">$ hexo deploy</div><div class="line">$ hexo deploy</div><div class="line">$ hexo deploy</div><div class="line">$ hexo deploy</div><div class="line">$ hexo deploy</div><div class="line">$ hexo deploy</div><div class="line">$ hexo deploy</div><div class="line">$ hexo deploy</div><div class="line">$ hexo deploy</div><div class="line">$ hexo deploy</div><div class="line">$ hexo deploy</div><div class="line">$ hexo deploy</div><div class="line">$ hexo deploy</div><div class="line">$ hexo deploy</div><div class="line">$ hexo deploy</div><div class="line">$ hexo deploy</div><div class="line">$ hexo deploy</div><div class="line">$ hexo deploy</div><div class="line">$ hexo deploy</div><div class="line">$ hexo deploy</div><div class="line">$ hexo deploy</div><div class="line">$ hexo deploy</div><div class="line">$ hexo deploy</div><div class="line">$ hexo deploy</div><div class="line">$ hexo deploy</div><div class="line">$ hexo deploy</div><div class="line">$ hexo deploy</div><div class="line">$ hexo deploy</div><div class="line">$ hexo deploy</div><div class="line">$ hexo deploy</div><div class="line">$ hexo deploy</div><div class="line">$ hexo deploy</div><div class="line">$ hexo deploy</div><div class="line">$ hexo deploy</div><div class="line">$ hexo deploy</div><div class="line">$ hexo deploy</div><div class="line">$ hexo deploy</div><div class="line">$ hexo deploy</div><div class="line">$ hexo deploy</div><div class="line">$ hexo deploy</div><div class="line">$ hexo deploy</div><div class="line">$ hexo deploy</div><div class="line">$ hexo deploy</div><div class="line">$ hexo deploy</div><div class="line">$ hexo deploy</div><div class="line">$ hexo deploy</div><div class="line">$ hexo deploy</div><div class="line">$ hexo deploy</div><div class="line">$ hexo deploy</div><div class="line">$ hexo deploy</div><div class="line">$ hexo deploy</div><div class="line">$ hexo deploy</div><div class="line">$ hexo deploy</div><div class="line">$ hexo deploy</div><div class="line">$ hexo deploy</div><div class="line">$ hexo deploy</div><div class="line">$ hexo deploy</div><div class="line">$ hexo deploy</div><div class="line">$ hexo deploy</div><div class="line">$ hexo deploy</div><div class="line">$ hexo deploy</div><div class="line">$ hexo deploy</div><div class="line">$ hexo deploy</div><div class="line">$ hexo deploy</div><div class="line">$ hexo deploy</div><div class="line">$ hexo deploy</div><div class="line">$ hexo deploy</div><div class="line">$ hexo deploy</div><div class="line">$ hexo deploy</div><div class="line">$ hexo deploy</div><div class="line">$ hexo deploy</div><div class="line">$ hexo deploy</div><div class="line">$ hexo deploy</div><div class="line">$ hexo deploy</div><div class="line">$ hexo deploy</div><div class="line">$ hexo deploy</div><div class="line">$ hexo deploy</div><div class="line">$ hexo deploy</div><div class="line">$ hexo deploy</div><div class="line">$ hexo deploy</div><div class="line">$ hexo deploy</div><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+        <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>&nbsp;&nbsp;建造者模式也称为生成器模式，是一种对象创建型模式，它可以将复杂对象的建造过程抽象出来（抽象类别），使这个抽象过程的不同实现方法可以构造出不同表现（属性）的对象。<br><a id="more"></a><br>&nbsp;&nbsp;建造者模式意在为重叠构造器这种反模式(telescoping constructor anti-pattern)找到一种解决方案，对于重叠构造器反模式，我们经常能看到类似于下列的构造器形式（下述例子来源于《Effective Java》）：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="title">NutritionFacts</span><span class="params">(<span class="keyword">int</span> servingSize, <span class="keyword">int</span> servings)</span> </span>&#123;</div><div class="line">    <span class="keyword">this</span>(servingSize, servings, <span class="number">0</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="title">NutritionFacts</span><span class="params">(<span class="keyword">int</span> servingSize, <span class="keyword">int</span> servings, <span class="keyword">int</span> calories)</span> </span>&#123;</div><div class="line">    <span class="keyword">this</span>(servingSize, servings, calories, <span class="number">0</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="title">NutritionFacts</span><span class="params">(<span class="keyword">int</span> servingSize, <span class="keyword">int</span> servings, <span class="keyword">int</span> calories, <span class="keyword">int</span> fat)</span> </span>&#123;</div><div class="line">    <span class="keyword">this</span>(servingSize, servings, calories, fat, <span class="number">0</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="title">NutritionFacts</span><span class="params">(<span class="keyword">int</span> servingSize, <span class="keyword">int</span> servings, <span class="keyword">int</span> calories, <span class="keyword">int</span> fat,</span></span></div><div class="line"><span class="function"><span class="params">                      <span class="keyword">int</span> sodium)</span> </span>&#123;</div><div class="line">    <span class="keyword">this</span>(servingSize, servings, calories, fat, sodium, <span class="number">0</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="title">NutritionFacts</span><span class="params">(<span class="keyword">int</span> servingSize, <span class="keyword">int</span> servings, <span class="keyword">int</span> calories, <span class="keyword">int</span> fat,</span></span></div><div class="line"><span class="function"><span class="params">                      <span class="keyword">int</span> sodium, <span class="keyword">int</span> carbohydrate)</span> </span>&#123;</div><div class="line">    <span class="keyword">this</span>.servingSize = servingSize;</div><div class="line">    <span class="keyword">this</span>.servings = servings;</div><div class="line">    <span class="keyword">this</span>.calories = calories;</div><div class="line">    <span class="keyword">this</span>.fat = fat;</div><div class="line">    <span class="keyword">this</span>.sodium = sodium;</div><div class="line">    <span class="keyword">this</span>.carbohydrate = carbohydrate;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>&nbsp;&nbsp;如上所见，这些构造器可能包含了一些我们并不想设置的参数，但是还是不得不为其传递值，并且，当参数一多，代码就会变得难以阅读，时常出现无法知道某一个值的具体含义，必须仔细对照构造器来查找。伴随着参数的增多，这种方式的构造器将很快是去控制。<br>&nbsp;&nbsp;因此当遇到这种许多构造器参数的时候，可以选用建造者模式。</p>
+<h2 id="实现方式"><a href="#实现方式" class="headerlink" title="实现方式"></a>实现方式</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">NutritionFacts</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span> servingSize;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span> servings;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span> calories;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span> fat;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span> sodium;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span> carbohydrate;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Builder</span> </span>&#123;</div><div class="line">        <span class="comment">// 必要参数</span></div><div class="line">        <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span> servingSize;</div><div class="line">        <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span> servings;</div><div class="line"></div><div class="line">        <span class="comment">// 可选参数</span></div><div class="line">        <span class="keyword">private</span> <span class="keyword">int</span> calories = <span class="number">0</span>;</div><div class="line">        <span class="keyword">private</span> <span class="keyword">int</span> fat = <span class="number">0</span>;</div><div class="line">        <span class="keyword">private</span> <span class="keyword">int</span> carbohydrate = <span class="number">0</span>;</div><div class="line">        <span class="keyword">private</span> <span class="keyword">int</span> sodium = <span class="number">0</span>;</div><div class="line"></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="title">Builder</span><span class="params">(<span class="keyword">int</span> servingSize, <span class="keyword">int</span> servings)</span> </span>&#123;</div><div class="line">            <span class="keyword">this</span>.servingSize = servingSize;</div><div class="line">            <span class="keyword">this</span>.servings = servings;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="function"><span class="keyword">public</span> Builder <span class="title">calories</span><span class="params">(<span class="keyword">int</span> val)</span> </span>&#123;</div><div class="line">            calories = val;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">this</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="function"><span class="keyword">public</span> Builder <span class="title">fat</span><span class="params">(<span class="keyword">int</span> val)</span> </span>&#123;</div><div class="line">            fat = val;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">this</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="function"><span class="keyword">public</span> Builder <span class="title">carbohydrate</span><span class="params">(<span class="keyword">int</span> val)</span> </span>&#123;</div><div class="line">            carbohydrate = val;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">this</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="function"><span class="keyword">public</span> Builder <span class="title">sodium</span><span class="params">(<span class="keyword">int</span> val)</span> </span>&#123;</div><div class="line">            sodium = val;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">this</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="function"><span class="keyword">public</span> NutritionFacts <span class="title">build</span><span class="params">()</span> </span>&#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">new</span> NutritionFacts(<span class="keyword">this</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="title">NutritionFacts</span><span class="params">(Builder builder)</span> </span>&#123;</div><div class="line">        servingSize = builder.servingSize;</div><div class="line">        servings = builder.servings;</div><div class="line">        calories = builder.calories;</div><div class="line">        fat = builder.fat;</div><div class="line">        sodium = builder.sodium;</div><div class="line">        carbohydrate = builder.carbohydrate;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        NutritionFacts cocaCola = <span class="keyword">new</span> NutritionFacts.Builder(<span class="number">240</span>, <span class="number">8</span>)</div><div class="line">                .calories(<span class="number">100</span>).sodium(<span class="number">35</span>).carbohydrate(<span class="number">27</span>).build();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>&nbsp;&nbsp;如上代码所示，这样的客户端代码容易编写，并且易于阅读。对于参数值，可以单独设置组合，不再需要传递不必要的参数值。</p>
+<h2 id="适用环境"><a href="#适用环境" class="headerlink" title="适用环境"></a>适用环境</h2><ul>
+<li>需要生成的产品对象有复杂的内部结构，这些产品对象通常包含多个成员属性</li>
+<li>构建的过程允许对构建的对象进行不同的表示</li>
+</ul>
+<h2 id="具体实例"><a href="#具体实例" class="headerlink" title="具体实例"></a>具体实例</h2><ul>
+<li><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/StringBuilder.html" target="_blank" rel="external">java.lang.StringBuilder</a></li>
+<li><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/StringBuffer.html#append-boolean-" target="_blank" rel="external">java.lang.StringBuffer</a></li>
+</ul>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a href="https://github.com/iluwatar/java-design-patterns/tree/master/singleton" target="_blank" rel="external">java-design-patterns</a></li>
+<li>《Effective Java 第2版》</li>
+</ul>
 
       
 
@@ -197,6 +204,21 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">设计模式</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -247,7 +269,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=https://zhaoxizhang.github.io/2017/08/08/test/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=https://zhaoxizhang.github.io/2018/06/17/Java-Design-Patterns-Builder/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -261,15 +283,20 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/04/20/Java8-tutorial/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018/09/29/The-use-of-dlopen dlmopen dlclose-in-C/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Java 8新特性
+          加载动态链接库——dlopen dlsym dlclose
         
       </div>
     </a>
   
+  
+    <a href="/2018/06/14/Java-Design-Patterns-Singleton/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Java设计模式——单例模式（创建型模式）</div>
+      <i class="icon-circle-right"></i>
+    </a>
   
 </nav>
 
@@ -287,6 +314,19 @@
         </div>
         
         
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#概述"><span class="toc-number">1.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实现方式"><span class="toc-number">2.</span> <span class="toc-text">实现方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#适用环境"><span class="toc-number">3.</span> <span class="toc-text">适用环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#具体实例"><span class="toc-number">4.</span> <span class="toc-text">具体实例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考资料"><span class="toc-number">5.</span> <span class="toc-text">参考资料</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
     </div>
 </aside>
 
@@ -298,7 +338,7 @@
 <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
 <script>
 var gitment = new Gitment({
-id: 'Tue Aug 08 2017 20:14:39 GMT+0800',
+id: 'Sun Jun 17 2018 00:00:00 GMT+0800',
 owner: 'ZhaoxiZhang',
 repo: 'ZhaoxiZhang.github.io',
 oauth: {
