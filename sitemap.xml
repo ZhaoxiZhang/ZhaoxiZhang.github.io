@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://zhaoxizhang.github.io/2018/12/12/Java-LinkedHashMap-Source-Analysis/</loc>
+    
+    <lastmod>2018-12-12T11:09:28.453Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://zhaoxizhang.github.io/2018/04/20/Java8-tutorial/</loc>
     
     <lastmod>2018-11-06T16:42:12.712Z</lastmod>
