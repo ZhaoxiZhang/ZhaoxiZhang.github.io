@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://zhaoxizhang.github.io/2019/01/01/Android-LruCache-Source-Analysis/</loc>
+    
+    <lastmod>2019-01-01T06:33:38.679Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://zhaoxizhang.github.io/2018/12/12/Java-LinkedHashMap-Source-Analysis/</loc>
     
     <lastmod>2018-12-12T11:09:28.453Z</lastmod>
